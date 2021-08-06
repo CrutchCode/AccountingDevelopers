@@ -1,0 +1,129 @@
+<div class="container-md">
+  <div class="">
+    <section id="banner">
+      <div>
+        <img id="banner-img" src="https://www.exentials.net/wp-content/uploads/2019/09/ASP-NET-Core-Logo-1.png" />
+      </div>
+    </section>    
+
+    <!-- New project creation menu -->
+    <section>
+      <div>
+        <header id="header">
+          <h2>Project management</h2>
+          <p>
+            This is a project management page. Here you can create, edit and delete your projects.
+            Currently, all these features are available, also added a "filter" for projects contained in the database.
+            This project looks much better than the previous one, but still has something to work on, because I did not have to work with the frontend. :D
+          </p>
+        </header>
+        
+        <div class="border-format">
+          <div class="header-creation-menu">
+            <h4>To create a conditional project, fill in the following fields:</h4>
+          </div>
+
+          <div class="creation-menu">
+
+            <div class="form-group">
+              <!--<label>Enter a name for the project</label>-->
+              <input type="text" class="form-control" placeholder="Name" [(ngModel)]="project.projectName" #nameValid="ngModel" required>
+            </div>
+
+            <div class="form-group">
+              <!--<label>Enter a description</label>-->
+              <input type="text" class="form-control " placeholder="Description" [(ngModel)]="project.description" #descriptionValid="ngModel" required>
+            </div>
+
+            <div class="form-group">
+              <!--<label>Enter the creation date</label>-->
+              <input type="date" class="form-control" [(ngModel)]="project.dateOfCreate" #dateOfCreateValid="ngModel" required>
+            </div>
+
+            <div>
+              <button type="button" class="btn btn-primary mb-2" [disabled]="nameValid.invalid || descriptionValid.invalid || dateOfCreateValid.invalid" (click)="create()">
+                Create
+              </button>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Heading to the table -->
+    <section>
+      <div id="header-table">
+        <h3>Project accounting table</h3>
+        <p>Here is all the data about the projects contained in the database.</p>
+      </div>
+    </section>    
+
+    <!-- Filter menu -->
+    <section>
+      <div id="filter">
+        <label>Filter description</label>
+        <div class="form-group">
+          <select class="form-control" id="exampleFormControlSelect1" [(ngModel)]="option" (click)="filter(option)">
+            <option value="">Select...</option>
+            <option *ngFor="let opt of options">{{opt}}</option>
+          </select>
+        </div>
+      </div>
+    </section>    
+
+    <!-- Data output table -->
+    <section>
+      <div>
+        <table class="table table-hover">
+          <thead (click)="reverseTable()">
+            <tr>
+              <th scope="col" style="cursor: pointer;">Project Name</th>
+              <th scope="col" style="cursor: pointer;">Description</th>
+              <th scope="col" style="cursor: pointer;">Date of Creation</th>
+              <th></th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let project of projects">
+              <ng-container *ngIf="editProject.id != project.id; else editProjectTemplate">
+                <td>{{project.projectName}}</td>
+                <td>{{project.description}}</td>
+                <td>{{project.dateOfCreate | date}}</td>
+                <td><button type="button" class="btn btn-outline-info" (click)="editLoadProject(project)">Edit</button></td>
+                <td><button type="button" class="btn btn-outline-danger" (click)="delete(project)">Delete</button></td>
+              </ng-container>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- Project editing table template -->
+        <table>
+          <tr>
+            <ng-template #editProjectTemplate>
+              <td>
+                <input type="text" class="form-control" [(ngModel)]="editProject.projectName" />
+              </td>
+              <td>
+                <input type="text" class="form-control" [(ngModel)]="editProject.description" />
+              </td>
+              <td>
+                <input type="text" class="form-control" [(ngModel)]="editProject.dateOfCreate" />
+              </td>
+              <td>
+                <button type="button" class="btn btn-outline-dark" (click)="save(editProject)">Save</button>
+              </td>
+              <td>
+                <button type="button" class="btn btn-outline-danger" (click)="cancel()">Cancel</button>
+              </td>
+            </ng-template>
+          </tr>
+        </table>
+      </div>
+    </section>
+
+  </div>
+</div>
+

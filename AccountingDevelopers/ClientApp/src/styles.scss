@@ -1,0 +1,25 @@
+/* You can add global styles to this file, and also import other style files */
+// Reset.
+// Based on meyerweb.com/eric/tools/css/reset (v2.0 | 20110126 | License: public domain)
+/* Указываем box sizing */
+/*h1{
+    font-family:'Microsoft JhengHei'
+}*/
+
+h2 {
+  margin: 1em 0 1em 0;
+}
+
+#banner {
+  div {
+    background-color: #b0c2ff;
+    margin-bottom: 1em;
+  }
+
+  &-img {
+    margin: 0 auto;
+    display: block;
+  }
+}
+
+

@@ -1,0 +1,80 @@
+.creation-menu {
+  margin-left: 10em;
+  margin-bottom: 1em;
+
+  div {
+    display: inline-block;
+    margin: 1em;
+    text-align: left;
+  }
+
+  label {
+    font-size: 16px;
+    font-weight: 400;
+  }
+}
+
+.header-creation-menu {
+  h4 {
+    margin: 1em 1.5em 0.5em 1em;
+  }
+
+  span {
+    font-weight: 600;
+  }
+}
+
+.border-format {
+  border: 1px solid;
+  border-color: lightslategrey;
+  background-color: #f2f2f2;
+}
+
+#header {
+  p {
+    text-indent: 35px;
+  }
+
+  &-table {
+    h3 {
+      margin-top: 1em;
+      margin-bottom: 0.5em;
+    }
+
+    text-align: center;
+
+    p {
+      text-align: center;
+    }
+  }
+}
+
+#filter {
+  margin-left: 20px;
+  margin-right: 20px;
+  float: right;
+
+  label {
+    margin: 10px;
+    font-weight: 500;
+    font-style: oblique;
+  }
+
+  div {
+    display: inline-block;
+  }
+
+  select {
+    width: auto;
+  }
+}
+
+/*.my-container {
+  width: 90%;
+  max-width: 100%;
+  margin: 0 auto;
+  padding-right: 15px;
+  padding-left: 15px;*/
+/*margin-left: 20px;
+    margin-right: 20px;*/
+/*}*/

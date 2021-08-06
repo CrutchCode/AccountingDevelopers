@@ -1,0 +1,212 @@
+<div class="container-md">
+  <div class="">
+    <section>
+      <div class="row">
+
+        <!---->
+        <div>
+          <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+              <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
+              <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
+              <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img src="../assets/img/angular.png" class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                  <!--<h5>Angular</h5>-->
+                  <p>In this task, I first used a third-party client, in this case, chose Angular.</p>
+                </div>
+              </div>
+              <div id="slide-text-color" class="carousel-item">
+                <img src="../assets/img/bt.png" class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                  <!--<h5>Bootstrap</h5>-->
+                  <p>This project also contains Bootstrap, and also added its own styles to the pages.</p>
+                </div>
+              </div>
+              <div id="slide-text-color" class="carousel-item">
+                <img src="../assets/img/cSh.png" class="d-block w-100" alt="...">
+                <div id="slide-text-color" class="carousel-caption d-none d-md-block">
+                  <!--<h5>Back-end on .net</h5>-->
+                  <p>The backend is implemented on .Net Core, still on crutches, but still works!</p>
+                </div>
+              </div>
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Предыдущий</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Следующий</span>
+            </a>
+          </div>
+        </div>
+
+        <!---->
+        <div class="spliter">
+          <header id="header">
+            <h2>Developer management</h2>
+            <p>
+              On this page you have control over the programmers.
+              That is, you can add new developers, correct their data
+              (change their name, surname or change the position in which the programmer works) and dismiss the developer.
+            </p>
+          </header>
+        </div>
+
+        <!---->
+        <div class="col-3 spliter-col col-padd-left">
+          <div>
+            <div class="text-center">
+              <div>
+                <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="#707070" class="bi bi-person-circle" viewBox="0 0 16 16">
+                  <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+                  <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
+                </svg>
+              </div>
+              <h4>Developer</h4>
+              <br />
+            </div>
+
+            <!---->
+            <div>
+
+              <div class="form-group custom-label text-center">
+                <!--<label>Name</label>-->
+                <input type="text" class="form-control" placeholder="Name" [(ngModel)]="developer.name" #nameValid="ngModel" [ngClass]="{'is-valid':nameValid.valid}" required>
+              </div>
+
+              <div class="form-group custom-label text-center">
+                <!--<label>Surname</label>-->
+                <input type="text" class="form-control " placeholder="Surname" [(ngModel)]="developer.lastName" #lastNameValid="ngModel" [ngClass]="{'is-valid':lastNameValid.valid}" required>
+              </div>
+
+              <div class="form-group custom-label text-center">
+                <!--<label>Position</label>-->
+                <input type="text" class="form-control" placeholder="Position" [(ngModel)]="developer.position" #positionValid="ngModel" [ngClass]="{'is-valid':positionValid.valid}" required>
+              </div>
+
+              <div class="text-center">
+                <button type="button" class="btn btn-primary mb-2 butt-sub" [disabled]="nameValid.invalid || lastNameValid.invalid || positionValid.invalid" (click)="add()">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-plus" viewBox="0 0 16 16">
+                    <path d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H1s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C9.516 10.68 8.289 10 6 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z" />
+                    <path fill-rule="evenodd" d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z" />
+                  </svg>
+                </button>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <div class="col col-padd-rigth">
+
+          <!-- Heading to the table -->
+          <section>
+            <div id="header-table">
+              <h3>Complete list of all developers</h3>
+              <p>
+                Yes, the same table is used here as in "projects", could not come up with
+                a better output of data of all programmers which are in a database.
+                If you have ideas on how to design it, suggest it :D
+              </p>
+            </div>
+          </section>
+
+          <!-- Filter menu -->
+          <section>
+            <div id="filter">
+              <label>Filter position</label>
+              <div class="form-group">
+                <select class="form-control" id="exampleFormControlSelect1" [(ngModel)]="option" (click)="filter(option)">
+                  <option value="">Select...</option>
+                  <option *ngFor="let opt of options">{{opt}}</option>
+                </select>
+              </div>
+            </div>
+          </section>
+
+          <!-- Data output table -->
+          <section>
+            <div>
+              <table class="table table-hover">
+                <thead (click)="reverseTable()">
+                  <tr>
+                    <th scope="col" style="cursor: pointer;">Name</th>
+                    <th scope="col" style="cursor: pointer;">Surname</th>
+                    <th scope="col" style="cursor: pointer;">Position</th>
+                    <th></th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let developer of developers">
+                    <ng-container *ngIf="editedDeveloper.id != developer.id; else editDeveloper">
+                      <td>{{developer.name}}</td>
+                      <td>{{developer.lastName}}</td>
+                      <td>{{developer.position}}</td>
+                      <td>
+                        <button type="button" class="btn btn-outline-info">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-lines-fill" viewBox="0 0 16 16" (click)="downloadEditedDeveloper(developer)">
+                            <path d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-5 6s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zM11 3.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5zm.5 2.5a.5.5 0 0 0 0 1h4a.5.5 0 0 0 0-1h-4zm2 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1h-2zm0 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1h-2z" />
+                          </svg>
+                        </button>
+                      </td>
+                      <td>
+                        <button type="button" class="btn btn-outline-danger">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-x-fill" viewBox="0 0 16 16" (click)="delete(developer)">
+                            <path fill-rule="evenodd" d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm6.146-2.854a.5.5 0 0 1 .708 0L14 6.293l1.146-1.147a.5.5 0 0 1 .708.708L14.707 7l1.147 1.146a.5.5 0 0 1-.708.708L14 7.707l-1.146 1.147a.5.5 0 0 1-.708-.708L13.293 7l-1.147-1.146a.5.5 0 0 1 0-.708z" />
+                          </svg>
+                        </button>
+                      </td>
+                    </ng-container>
+                  </tr>
+                </tbody>
+              </table>
+
+              <!-- Project editing table template -->
+              <table>
+                <tr>
+                  <ng-template #editDeveloper>
+                    <td>
+                      <input type="text" class="form-control" [(ngModel)]="editedDeveloper.name" />
+                    </td>
+                    <td>
+                      <input type="text" class="form-control" [(ngModel)]="editedDeveloper.lastName" />
+                    </td>
+                    <td>
+                      <input type="text" class="form-control" [(ngModel)]="editedDeveloper.position" />
+                    </td>
+                    <td>
+                      <button type="button" class="btn btn-outline-dark" (click)="save(editedDeveloper)">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-check-fill" viewBox="0 0 16 16">
+                          <path fill-rule="evenodd" d="M15.854 5.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 0 1 .708-.708L12.5 7.793l2.646-2.647a.5.5 0 0 1 .708 0z" />
+                          <path d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+                        </svg>
+                      </button>
+                    </td>
+                    <td>
+                      <button type="button" class="btn btn-outline-danger" (click)="cencel()">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-dash-fill" viewBox="0 0 16 16">
+                          <path fill-rule="evenodd" d="M11 7.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5z" />
+                          <path d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+                        </svg>
+                      </button>
+                    </td>
+                  </ng-template>
+                </tr>
+              </table>
+            </div>
+          </section>
+        </div>
+      </div>
+    </section>
+
+    
+
+  </div>
+</div>
+
