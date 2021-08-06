@@ -11,7 +11,7 @@ namespace AccountingDevelopers.Models
         public string ProjectName { get; set; }
         public string Description { get; set; }
         public DateTime DateOfCreate { get; set; }
-        public int DeveloperId { get; set; }
+        public int? DeveloperId { get; set; }
         public string FullName { get; set; }
         public string Position { get; set; }
     }

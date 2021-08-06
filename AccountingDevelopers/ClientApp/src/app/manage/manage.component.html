@@ -1,3 +1,96 @@
 <div class="container">
+  <div>
+
+    <!---->
+    <section>
+      <header>
+        <h2>Management page</h2>
+        <p>
+          On this page you can assign programmers to projects, and if necessary, remove them from projects.
+        </p>
+      </header>
+    </section>
+
+    <section>
+      <div>
+
+        <!---->
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th scope="col" style="cursor: pointer;">Project Name</th>
+              <th scope="col" style="cursor: pointer;">Description</th>
+              <th scope="col" style="cursor: pointer;">Date of Creation</th>
+              <th>Developer</th>
+              <th>Position</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of fullList">
+              <ng-container *ngIf="true; else removeDeveloper">
+                <td>{{item.projectName}}</td>
+                <td>{{item.description}}</td>
+                <td>{{item.dateOfCreate | date}}</td>
+                <td>{{item.fullName}}</td>
+                <td>{{item.position}}</td>
+                <td></td>
+              </ng-container>
+            </tr>
+
+            <!--<tr>
+              <ng-container>
+                <td>Accounting Developers</td>
+                <td>Web Site</td>
+                <td>Jun 15, 2021</td>
+                <td>
+                  <select class="form-control" id="exampleFormControlSelect1">
+                    <option value="">Select...</option>
+                    <option>Bill	Johnson</option>
+                    <option>Darth	Vaider</option>
+                    <option>Adam	Doker</option>
+                  </select>
+                </td>
+                <td>
+                  <select class="form-control" id="exampleFormControlSelect1">
+                    <option value="">Select...</option>
+                    <option>Junior</option>
+                    <option>Middle</option>
+                    <option>Senior</option>
+                  </select>
+                </td>
+                <td><button type="button" class="btn btn-outline-info">Add--</button></td>
+              </ng-container>
+            </tr>
+            <tr>
+              <ng-container>
+                <td>Accounting Developers</td>
+                <td>Web Site</td>
+                <td>Jun 15, 2021</td>
+                <td>Bill Johnson</td>
+                <td>Junior</td>
+                <td><button type="button" class="btn btn-outline-danger">Delete</button></td>
+              </ng-container>
+            </tr>-->
+          </tbody>
+        </table>
+
+        <!---->
+        <table>
+          <tr>
+            <ng-template #removeDeveloper>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </ng-template>
+          </tr>
+        </table>
+
+      </div>
+    </section>
+  </div>
 
 </div>
