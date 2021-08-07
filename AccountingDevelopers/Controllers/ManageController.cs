@@ -62,8 +62,12 @@ namespace AccountingDevelopers.Controllers
 
         // POST api/<ServiceController>
         [HttpPost]
-        public void Post()
+        public async Task<ActionResult> Post(FullAccountingModel fullModel)
         {
+            var projectDTO = await _dataManage.GetProjectDTOAsync(fullModel.ProjectId);
+            var developerDTO = await _dataManage.GetDeveloperDTOAsync((int)fullModel.DeveloperId);
+
+            return Ok(fullModel);
             
         }
 

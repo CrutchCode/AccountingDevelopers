@@ -24,67 +24,52 @@
               <th>Developer</th>
               <th>Position</th>
               <th></th>
+              <th></th>
             </tr>
           </thead>
           <tbody>
             <tr *ngFor="let item of fullList">
-              <ng-container *ngIf="true; else removeDeveloper">
-                <td>{{item.projectName}}</td>
-                <td>{{item.description}}</td>
-                <td>{{item.dateOfCreate | date}}</td>
-                <td>{{item.fullName}}</td>
-                <td>{{item.position}}</td>
-                <td></td>
-              </ng-container>
+              <ng-template [ngTemplateOutlet]="loadTemplate(item)" [ngTemplateOutletContext]="{ $implicit: item}"></ng-template>
             </tr>
-
-            <!--<tr>
-              <ng-container>
-                <td>Accounting Developers</td>
-                <td>Web Site</td>
-                <td>Jun 15, 2021</td>
-                <td>
-                  <select class="form-control" id="exampleFormControlSelect1">
-                    <option value="">Select...</option>
-                    <option>Bill	Johnson</option>
-                    <option>Darth	Vaider</option>
-                    <option>Adam	Doker</option>
-                  </select>
-                </td>
-                <td>
-                  <select class="form-control" id="exampleFormControlSelect1">
-                    <option value="">Select...</option>
-                    <option>Junior</option>
-                    <option>Middle</option>
-                    <option>Senior</option>
-                  </select>
-                </td>
-                <td><button type="button" class="btn btn-outline-info">Add--</button></td>
-              </ng-container>
-            </tr>
-            <tr>
-              <ng-container>
-                <td>Accounting Developers</td>
-                <td>Web Site</td>
-                <td>Jun 15, 2021</td>
-                <td>Bill Johnson</td>
-                <td>Junior</td>
-                <td><button type="button" class="btn btn-outline-danger">Delete</button></td>
-              </ng-container>
-            </tr>-->
           </tbody>
         </table>
 
         <!---->
         <table>
           <tr>
-            <ng-template #removeDeveloper>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
+            <ng-template #TemplatePart1 let-item>
+              <td>{{item.projectName}}</td>
+              <td>{{item.description}}</td>
+              <td>{{item.dateOfCreate | date}}</td>
+              <td>{{item.fullName}}</td>
+              <td>{{item.position}}</td>
+              <td><button type="button" class="btn btn-outline-danger" (click)="edit(item)">Edit</button></td>
+              <td><button type="button" class="btn btn-outline-info">Delete</button></td>
+            </ng-template>
+          </tr>
+        </table>
+
+        <!---->
+        <table>
+          <tr>
+            <ng-template #TemplatePart2 let-item>
+              <td>{{item.projectName}}</td>
+              <td>{{item.description}}</td>
+              <td>{{item.dateOfCreate | date}}</td>
+              <td>
+                <select class="form-control" [(ngModel)]="option" (click)="choose(option)" #develop>
+                  <option value="0">Select...</option>
+                  <option *ngFor="let developer of developers" [value]="developer.id">{{developer.name}} {{developer.lastName}}</option>
+                </select>
+              </td>
+              <td>
+                <select class="form-control" [(ngModel)]="option" (click)="choose(option)">
+                  <option value="0">Select...</option>
+                  <option *ngFor="let developer of developers" [value]="developer.id">{{developer.position}}</option>
+                </select>
+              </td>
+              <td><button type="button" class="btn btn-outline-info" (click)="save()">Save</button></td>
+              <td><button type="button" class="btn btn-outline-info" (click)="cancel()">Cancel</button></td>
             </ng-template>
           </tr>
         </table>

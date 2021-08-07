@@ -12,4 +12,8 @@ export class DataManageService {
   getFullData() {
     return this.http.get<FullAccountingModel[]>(this._url);
   }
+
+  appointDeveloper(fullModel: FullAccountingModel) {
+    return this.http.post<FullAccountingModel>(this._url, fullModel);
+  }
 }
