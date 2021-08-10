@@ -15,6 +15,8 @@ namespace AccountingDevelopers.Models
             CreateMap<DeveloperDTO, DeveloperViewModel>();
             CreateMap<ProjectViewModel, ProjectDTO>();
             CreateMap<ProjectDTO, ProjectViewModel>();
+            CreateMap<FullAccountingModel, FullDTO>();
+            CreateMap<FullDTO, FullAccountingModel>();
         }
     }
 }

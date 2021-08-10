@@ -76,17 +76,17 @@
 
               <div class="form-group custom-label text-center">
                 <!--<label>Name</label>-->
-                <input type="text" class="form-control" placeholder="Name" [(ngModel)]="developer.name" #nameValid="ngModel" [ngClass]="{'is-valid':nameValid.valid}" required>
+                <input type="text" class="form-control" placeholder="Name" [(ngModel)]="developer.name" #nameValid="ngModel"  required>
               </div>
 
               <div class="form-group custom-label text-center">
                 <!--<label>Surname</label>-->
-                <input type="text" class="form-control " placeholder="Surname" [(ngModel)]="developer.lastName" #lastNameValid="ngModel" [ngClass]="{'is-valid':lastNameValid.valid}" required>
+                <input type="text" class="form-control " placeholder="Surname" [(ngModel)]="developer.lastName" #lastNameValid="ngModel" required>
               </div>
 
               <div class="form-group custom-label text-center">
                 <!--<label>Position</label>-->
-                <input type="text" class="form-control" placeholder="Position" [(ngModel)]="developer.position" #positionValid="ngModel" [ngClass]="{'is-valid':positionValid.valid}" required>
+                <input type="text" class="form-control" placeholder="Position" [(ngModel)]="developer.position" #positionValid="ngModel" required>
               </div>
 
               <div class="text-center">

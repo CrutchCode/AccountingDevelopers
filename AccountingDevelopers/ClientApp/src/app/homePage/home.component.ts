@@ -8,7 +8,7 @@ import { DataHomeService } from './data.home.service';
   styleUrls: ['./home.component.scss'],
   providers: [DataHomeService]
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit{
 
   //project: Project = new Project();
   //projects: Project[] = [];

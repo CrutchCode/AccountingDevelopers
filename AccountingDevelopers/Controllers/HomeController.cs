@@ -24,31 +24,11 @@ namespace AccountingDevelopers.Controllers
             _getDataManager = getDataManager;
             _mapper = mapper;
         }
+
         [HttpGet]
         public IEnumerable<FullAccountingModel> Get()
         {
-            var developersViewModel = _mapper.Map<List<DeveloperViewModel>>(_getDataManager.GetDeveloperDTOList());
-            var projectsViewModel = _mapper.Map<List<ProjectViewModel>>(_getDataManager.GetProjectDTOList());           
-            var fullAccountingModels = projectsViewModel.Join(developersViewModel,
-                            p => p.Id, 
-                            d => d.Id, 
-                            (p, d) => new FullAccountingModel
-                            {
-                                ProjectId = p.Id,
-                                ProjectName = p.ProjectName,
-                                Description = p.Description,
-                                DateOfCreate = p.DateOfCreate,
-                                DeveloperId = d.Id,
-                                FullName = $"{d.Name} {d.LastName}",
-                                Position = d.Position
-                            }).ToList();
-
-            return fullAccountingModels;
+            return _mapper.Map<List<FullAccountingModel>>(_getDataManager.AccountingData());
         }
-        //[HttpGet]
-        //public IEnumerable<ProjectDTO> Get()
-        //{
-        //    return _getDataManager.GetProjectDTOList();
-        //}
     }
 }

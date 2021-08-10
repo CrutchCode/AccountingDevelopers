@@ -28,29 +28,7 @@ namespace AccountingDevelopers.Controllers
         [HttpGet]
         public IEnumerable<FullAccountingModel> Get()
         {
-            var developersViewModel = _mapper.Map<List<DeveloperViewModel>>(_dataManage.GetDeveloperDTOList());
-            var projectsViewModel = _mapper.Map<List<ProjectViewModel>>(_dataManage.GetProjectDTOList());
-            var fullAccountingModels = projectsViewModel.GroupJoin(
-                developersViewModel,
-                p => p.Id,
-                d => d.Id,
-                (p, d) => new
-                {
-                    Projects = p,
-                    Developers = d
-                }).SelectMany(
-                d => d.Developers.DefaultIfEmpty(),
-                (p,d) => new FullAccountingModel
-                {
-                    ProjectId = p.Projects.Id,
-                    ProjectName = p.Projects.ProjectName,
-                    Description = p.Projects.Description,
-                    DateOfCreate = p.Projects.DateOfCreate,
-                    DeveloperId = d?.Id,
-                    FullName = $"{d?.Name} {d?.LastName}",
-                    Position = d?.Position
-                }).ToList();
-            return fullAccountingModels;
+            return _mapper.Map<List<FullAccountingModel>>(_dataManage.ManageData());
         }
 
         // GET api/<ServiceController>/5
@@ -64,11 +42,10 @@ namespace AccountingDevelopers.Controllers
         [HttpPost]
         public async Task<ActionResult> Post(FullAccountingModel fullModel)
         {
-            var projectDTO = await _dataManage.GetProjectDTOAsync(fullModel.ProjectId);
-            var developerDTO = await _dataManage.GetDeveloperDTOAsync((int)fullModel.DeveloperId);
+            await _dataManage.AddDevelopersToProject(fullModel.ProjectId, (int)fullModel.DeveloperId);
 
             return Ok(fullModel);
-            
+
         }
 
         // PUT api/<ServiceController>/5
